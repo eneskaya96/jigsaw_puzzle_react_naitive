@@ -20,7 +20,7 @@ const DraggableTarget = (props) => {
     let lastPanX = props.data.pos.x - Shared.targetSize/2;
     let lastPanY = props.data.pos.y - Shared.targetSize/2;
     const scaledSize = useRef(new Animated.Value(1)).current;
-    const zIndex = new Animated.Value(10);
+    const zIndex = new Animated.Value(Shared.lastZindex+1);
 
 
     const [final_pos_row, final_pos_column] = props.data.item.position.split('x');
@@ -30,7 +30,8 @@ const DraggableTarget = (props) => {
             if(props.data.locked) {
                 return false;
             }
-            zIndex.setValue(1000);
+            Shared.lastZindex+=1;
+            zIndex.setValue(Shared.lastZindex);
             scale.setValue(Shared.lastScale);
             Animated.timing(
                 scaledSize,
@@ -77,7 +78,7 @@ const DraggableTarget = (props) => {
                         lastPanY = y - Shared.targetSize/2;
                     }
                 } else {
-                    props.dragdrop(gesture.moveX, gesture.moveY, props.item, True);
+                    props.dragdrop(gesture.moveX, gesture.moveY, props.item, true);
                 }
             }
             props.data.pos.x = lastPanX + Shared.targetSize/2;
