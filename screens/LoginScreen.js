@@ -63,7 +63,7 @@ export default function LoginScreen({navigation}) {
               alignItems: 'center',
             }}>
             <Ionicons
-              name="ios-lock-closed-outline"
+              name="lock-closed-outline"
               size={25}
               color="#fff"
               style={{marginRight: 5}}
