@@ -46,10 +46,17 @@ export const styles = StyleSheet.create({
     position: 'absolute',
   },
   play_area: {
-    width: Dimensions.get('window').width * 0.8,
+    height: Dimensions.get('window').height * 0.6,
     aspectRatio: 0.5,
     backgroundColor: '#888',
     borderRadius: 10,
     margin: 25,
+  },
+  buttonShowImage: {
+    borderRadius: 25,
+    backgroundColor: '#090',
+    margin: 8,
+    padding: 20,
+    paddingHorizontal: 40,
   },
 });

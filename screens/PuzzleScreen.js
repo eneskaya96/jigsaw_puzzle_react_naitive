@@ -79,7 +79,7 @@ export default function PuzzleScreen({route, navigation}) {
                   selectedItem.status == 1 ||
                   (await start_puzzle(selectedItem.id))
                 ) {
-                  navigation.navigate('Play', {puzzle: selectedItem});
+                  navigation.navigate('Play', {puzzle: selectedItem, image_url: image_url});
                 }
               }}>
               <Text style={{fontSize: 18, color: '#fff'}}>

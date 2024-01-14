@@ -19,6 +19,7 @@ const DraggableSource = (props) => {
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder : () => {
+            if(props.showImage) {return false;}
             props.setIsDisableScroll(true);
             Animated.timing(
                 state.scaledSize,

@@ -1,10 +1,10 @@
-import { Animated } from "react-native";
+import { Animated, Image } from "react-native";
 import { PinchGestureHandler, PanGestureHandler, GestureHandlerRootView, State } from "react-native-gesture-handler";
 import { styles } from "../utilities/CustomStyles";
 import { Shared } from "../utilities/Shared";
 
 
-const ZoomableView = ({children, style, onLayout}) => {
+const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
     const focalX = new Animated.Value(0);
     const focalY = new Animated.Value(0);
 
@@ -98,7 +98,14 @@ const ZoomableView = ({children, style, onLayout}) => {
                 <PinchGestureHandler onGestureEvent={handlePinch} onHandlerStateChange={handlePinchStateChange}>
                     <Animated.View style={[styles.container,
                     {transform: [{scale: scale}, {translateX: panX}, {translateY: panY}]}]}>
-                        {children}
+                        {!showImage ? (children): (
+                            <Image
+                                style={{width: '100%', height: '100%'}}
+                                source={{
+                                    uri: imageUrl,
+                                }}
+                            />
+                        )}
                     </Animated.View>
                 </PinchGestureHandler>
             </PanGestureHandler>

@@ -1,4 +1,4 @@
-import {View, Text, FlatList, Share} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import {get_puzzle_pieces} from '../services/GameReqService';
 import {useState, useEffect} from 'react';
 import {styles} from '../utilities/CustomStyles';
@@ -8,13 +8,14 @@ import ZoomableView from '../components/ZoomableView';
 import {Shared} from '../utilities/Shared';
 
 export default function PlayScreen({route, navigation}) {
-    const {puzzle} = route.params;
+    const {puzzle, image_url} = route.params;
     const [columnCount, rowCount] = puzzle.type.split('x');
 
     const [pieces, setPieces] = useState([]);
     const [fetchCount, setFetchCount] = useState(0);
     const [isDisableScroll, setIsDisableScroll] = useState(false);
     const [targets, setTargets] = useState([]);
+    const [showImage, setShowImage] = useState(false);
 
     function dragdrop(x, y, item, isTarget) {
         if (!isTarget) {
@@ -58,7 +59,7 @@ export default function PlayScreen({route, navigation}) {
     }, []);
 
     return (
-        <View style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1}}>
         {pieces.length > 0 ? (
             <View
             style={{
@@ -76,6 +77,7 @@ export default function PlayScreen({route, navigation}) {
                     item={item}
                     setIsDisableScroll={setIsDisableScroll}
                     dragdrop={dragdrop}
+                    showImage={showImage}
                 />
                 )}
                 horizontal={true}
@@ -94,7 +96,9 @@ export default function PlayScreen({route, navigation}) {
                 onLayout={event => {
                 Shared.playAreaSize = event.nativeEvent.layout;
                 Shared.targetSize = Shared.playAreaSize.width / columnCount;
-                }}>
+                }}
+                showImage={showImage}
+                imageUrl={image_url}>
                 {targets.map((data, idx) => {
                 return (
                     <DraggableTarget
@@ -105,10 +109,20 @@ export default function PlayScreen({route, navigation}) {
                 );
                 })}
             </ZoomableView>
+
+            <TouchableOpacity
+              style={styles.buttonShowImage}
+              onPress={async () => {
+                setShowImage(!showImage);
+              }}>
+              <Text style={{fontSize: 18, color: '#fff'}}>
+                {showImage ? 'a' : 'b'}
+              </Text>
+            </TouchableOpacity>
             </View>
         ) : (
             <Text>Loading...</Text>
         )}
-        </View>
+        </SafeAreaView>
     );
 }
