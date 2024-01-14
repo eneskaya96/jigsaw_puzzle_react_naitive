@@ -46,7 +46,6 @@ const DraggableTarget = (props) => {
             }], {useNativeDriver: false})(e, gesture);
         },
         onPanResponderRelease        : (e, gesture) => {
-            zIndex.setValue(10);
             const {column, row} = getTargetIdx(gesture.moveX, gesture.moveY);
             if(column == final_pos_column && row == final_pos_row) {
                 props.data.locked = true;
