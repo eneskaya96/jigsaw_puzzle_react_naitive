@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {
   View,
   Text,
@@ -10,7 +9,6 @@ import {
 } from 'react-native';
 import * as Keychain from 'react-native-keychain';
 import {SafeAreaView} from 'react-native-safe-area-context';
-//import * as SecureStore from 'expo-secure-store';
 import {useState} from 'react';
 import {get_all_images} from '../services/GameReqService';
 
@@ -57,46 +55,45 @@ const item_styles = StyleSheet.create({
 });
 
 export default function HomeScreen({navigation}) {
-  const [images, setImages] = useState([]);
+    const [images, setImages] = useState([]);
 
-  if (images.length == 0) {
-    get_all_images().then(_images => setImages(_images));
-  }
+    if (images.length == 0) {
+        get_all_images().then(_images => setImages(_images));
+    }
 
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      {images.length > 0 ? (
-        <View>
-          <TouchableOpacity
-            onPress={async () => {
-              //await SecureStore.deleteItemAsync('access_token');
-              await Keychain.resetGenericPassword();
-              navigation.replace('Login');
-            }}
-            style={{
-              margin: 10,
-              borderWidth: 1,
-              backgroundColor: '#880',
-              borderRadius: 20,
-              borderColor: '#880',
-              padding: 10,
-              paddingHorizontal: 30,
-            }}>
-            <Text style={{color: '#700', fontWeight: '700'}}>QUIT</Text>
-          </TouchableOpacity>
+    return (
+        <SafeAreaView style={{flex: 1}}>
+        {images.length > 0 ? (
+            <View>
+            <TouchableOpacity
+                onPress={async () => {
+                await Keychain.resetGenericPassword();
+                navigation.replace('Login');
+                }}
+                style={{
+                margin: 10,
+                borderWidth: 1,
+                backgroundColor: '#880',
+                borderRadius: 20,
+                borderColor: '#880',
+                padding: 10,
+                paddingHorizontal: 30,
+                }}>
+                <Text style={{color: '#700', fontWeight: '700'}}>QUIT</Text>
+            </TouchableOpacity>
 
-          <FlatList
-            data={images}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => (
-              <Item _image={item} navigation={navigation} />
-            )}
-            numColumns={2}
-          />
-        </View>
-      ) : (
-        <Text>Loading...</Text>
-      )}
-    </SafeAreaView>
-  );
+            <FlatList
+                data={images}
+                keyExtractor={item => item.id}
+                renderItem={({item}) => (
+                <Item _image={item} navigation={navigation} />
+                )}
+                numColumns={2}
+            />
+            </View>
+        ) : (
+            <Text>Loading...</Text>
+        )}
+        </SafeAreaView>
+    );
 }

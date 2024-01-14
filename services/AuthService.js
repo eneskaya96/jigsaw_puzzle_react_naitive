@@ -1,4 +1,3 @@
-//import * as SecureStore from 'expo-secure-store';
 import * as Keychain from 'react-native-keychain';
 import {SAAS_BASE_URL} from '../utilities/Constants';
 
@@ -17,7 +16,6 @@ export async function loginReq(_email, _password) {
 
     const res_json = await response.json();
     if (res_json.success) {
-      //await SecureStore.setItemAsync('access_token', res_json.data.access_token);
       await Keychain.setGenericPassword(
         'access_token',
         res_json.data.access_token,
@@ -56,9 +54,7 @@ export async function registerReq(_email, _password) {
 }
 
 export async function validTokenReq() {
-  //const token = await SecureStore.getItemAsync('access_token');
   const token = await getToken();
-  console.log('token', token);
   if (!token) {
     return false;
   }
