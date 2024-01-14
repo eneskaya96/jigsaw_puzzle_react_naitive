@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
     zIndex: 1000,
     flexGrow: 0,
     width: '100%',
+    marginTop: 80
   },
   piece_container: {
     margin: 10,
@@ -46,17 +47,19 @@ export const styles = StyleSheet.create({
     position: 'absolute',
   },
   play_area: {
-    height: Dimensions.get('window').height * 0.6,
+    flex: 1,
     aspectRatio: 0.5,
     backgroundColor: '#888',
     borderRadius: 10,
     margin: 25,
+    alignSelf: 'center'
   },
   buttonShowImage: {
     borderRadius: 25,
     backgroundColor: '#090',
     margin: 8,
     padding: 20,
-    paddingHorizontal: 40,
+    alignSelf: 'center',
+    marginBottom: 50
   },
 });
