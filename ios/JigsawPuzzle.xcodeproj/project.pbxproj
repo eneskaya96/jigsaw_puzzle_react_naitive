@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* JigsawPuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* JigsawPuzzleTests.m */; };
-		0AA0FE486A51311F4ED73310 /* libPods-JigsawPuzzle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC2D91DA6CECDEF3967B83A /* libPods-JigsawPuzzle.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7B7B57D38B44F72DC23DC9B4 /* libPods-JigsawPuzzle-JigsawPuzzleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD91EFC3C24167DD1E8A03C /* libPods-JigsawPuzzle-JigsawPuzzleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		84438AEACF5746DC46151569 /* libPods-JigsawPuzzle-JigsawPuzzleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB20FDA2824E77B4403108C /* libPods-JigsawPuzzle-JigsawPuzzleTests.a */; };
+		9F369B82199DA67E0D4DC626 /* libPods-JigsawPuzzle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72E70823517839DECCD98EC /* libPods-JigsawPuzzle.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,20 +30,20 @@
 		00E356EE1AD99517003FC87E /* JigsawPuzzleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JigsawPuzzleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* JigsawPuzzleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JigsawPuzzleTests.m; sourceTree = "<group>"; };
-		0947D1C082D6D02CB3B7AD44 /* Pods-JigsawPuzzle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle.release.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* JigsawPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JigsawPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = JigsawPuzzle/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = JigsawPuzzle/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = JigsawPuzzle/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = JigsawPuzzle/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = JigsawPuzzle/main.m; sourceTree = "<group>"; };
-		268C9484F869043374C4444E /* Pods-JigsawPuzzle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle.debug.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle.debug.xcconfig"; sourceTree = "<group>"; };
-		5AD91EFC3C24167DD1E8A03C /* libPods-JigsawPuzzle-JigsawPuzzleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JigsawPuzzle-JigsawPuzzleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B741E30F4F956EAADC5A561 /* Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4945B227B2EF8C786DA2B71D /* Pods-JigsawPuzzle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle.debug.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = JigsawPuzzle/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AEC2D91DA6CECDEF3967B83A /* libPods-JigsawPuzzle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JigsawPuzzle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECE2E2A9CA28B0058A860B03 /* Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig"; sourceTree = "<group>"; };
+		AA5AC61EEA9F8536DAAE37AA /* Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig"; sourceTree = "<group>"; };
+		C72E70823517839DECCD98EC /* libPods-JigsawPuzzle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JigsawPuzzle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5C32E47503BBFDD8B0AE7E9 /* Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC1FF2DC42DC9E747D386544 /* Pods-JigsawPuzzle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JigsawPuzzle.release.xcconfig"; path = "Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FFB20FDA2824E77B4403108C /* libPods-JigsawPuzzle-JigsawPuzzleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JigsawPuzzle-JigsawPuzzleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B7B57D38B44F72DC23DC9B4 /* libPods-JigsawPuzzle-JigsawPuzzleTests.a in Frameworks */,
+				84438AEACF5746DC46151569 /* libPods-JigsawPuzzle-JigsawPuzzleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AA0FE486A51311F4ED73310 /* libPods-JigsawPuzzle.a in Frameworks */,
+				9F369B82199DA67E0D4DC626 /* libPods-JigsawPuzzle.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				AEC2D91DA6CECDEF3967B83A /* libPods-JigsawPuzzle.a */,
-				5AD91EFC3C24167DD1E8A03C /* libPods-JigsawPuzzle-JigsawPuzzleTests.a */,
+				C72E70823517839DECCD98EC /* libPods-JigsawPuzzle.a */,
+				FFB20FDA2824E77B4403108C /* libPods-JigsawPuzzle-JigsawPuzzleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				268C9484F869043374C4444E /* Pods-JigsawPuzzle.debug.xcconfig */,
-				0947D1C082D6D02CB3B7AD44 /* Pods-JigsawPuzzle.release.xcconfig */,
-				7B741E30F4F956EAADC5A561 /* Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig */,
-				ECE2E2A9CA28B0058A860B03 /* Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig */,
+				4945B227B2EF8C786DA2B71D /* Pods-JigsawPuzzle.debug.xcconfig */,
+				EC1FF2DC42DC9E747D386544 /* Pods-JigsawPuzzle.release.xcconfig */,
+				E5C32E47503BBFDD8B0AE7E9 /* Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig */,
+				AA5AC61EEA9F8536DAAE37AA /* Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "JigsawPuzzleTests" */;
 			buildPhases = (
-				E69BA04311408BE5D8C66DE2 /* [CP] Check Pods Manifest.lock */,
+				F1384E9FFABAFE8A52AA0F82 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				A83F0A4E24F6750147D8C9A9 /* [CP] Embed Pods Frameworks */,
-				9E0F6E64D3E7FADF75840E62 /* [CP] Copy Pods Resources */,
+				C5442936E3A339ECBF84F260 /* [CP] Embed Pods Frameworks */,
+				CAA54E84AF2B0DAA15F67751 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,13 +176,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "JigsawPuzzle" */;
 			buildPhases = (
-				332045805565EB311CA507F4 /* [CP] Check Pods Manifest.lock */,
+				DA1A97EE6140FBBC728A41BF /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				45A94AD0B8D7079AFD4BB2DE /* [CP] Embed Pods Frameworks */,
-				48EDD715800A37963A5CE345 /* [CP] Copy Pods Resources */,
+				CD33D978C7DA14F6AB16B582 /* [CP] Embed Pods Frameworks */,
+				C3C0EE77930F90250956EE0B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,7 +265,75 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		332045805565EB311CA507F4 /* [CP] Check Pods Manifest.lock */ = {
+		C3C0EE77930F90250956EE0B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5442936E3A339ECBF84F260 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAA54E84AF2B0DAA15F67751 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD33D978C7DA14F6AB16B582 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA1A97EE6140FBBC728A41BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,75 +355,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		45A94AD0B8D7079AFD4BB2DE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		48EDD715800A37963A5CE345 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle/Pods-JigsawPuzzle-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9E0F6E64D3E7FADF75840E62 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A83F0A4E24F6750147D8C9A9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JigsawPuzzle-JigsawPuzzleTests/Pods-JigsawPuzzle-JigsawPuzzleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E69BA04311408BE5D8C66DE2 /* [CP] Check Pods Manifest.lock */ = {
+		F1384E9FFABAFE8A52AA0F82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,7 +410,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B741E30F4F956EAADC5A561 /* Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig */;
+			baseConfigurationReference = E5C32E47503BBFDD8B0AE7E9 /* Pods-JigsawPuzzle-JigsawPuzzleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = JAFR38P3A4;
@@ -438,7 +438,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECE2E2A9CA28B0058A860B03 /* Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig */;
+			baseConfigurationReference = AA5AC61EEA9F8536DAAE37AA /* Pods-JigsawPuzzle-JigsawPuzzleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -463,7 +463,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 268C9484F869043374C4444E /* Pods-JigsawPuzzle.debug.xcconfig */;
+			baseConfigurationReference = 4945B227B2EF8C786DA2B71D /* Pods-JigsawPuzzle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -491,7 +491,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0947D1C082D6D02CB3B7AD44 /* Pods-JigsawPuzzle.release.xcconfig */;
+			baseConfigurationReference = EC1FF2DC42DC9E747D386544 /* Pods-JigsawPuzzle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

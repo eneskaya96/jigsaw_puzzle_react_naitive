@@ -80,3 +80,8 @@ To learn more about React Native, take a look at the following resources:
 
 
 npx react-native doctor
+
+
+pod deintegrate
+pod install
+pod update
