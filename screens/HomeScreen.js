@@ -11,6 +11,7 @@ import * as Keychain from 'react-native-keychain';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useState} from 'react';
 import {get_all_images} from '../services/GameReqService';
+import BannerAd from '../components/ads/BannerAd';
 
 const Item = ({_image, navigation}) => {
   const [loading, setLoading] = useState(true);
@@ -90,6 +91,7 @@ export default function HomeScreen({navigation}) {
                 )}
                 numColumns={2}
             />
+            <BannerAd />
             </View>
         ) : (
             <Text>Loading...</Text>
