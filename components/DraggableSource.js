@@ -33,6 +33,16 @@ const DraggableSource = (props) => {
                 dy : state.pan.y
             }], {useNativeDriver: false})(e, gesture);
         },
+        onPanResponderTerminate: (evt, gestureState) => {
+            Animated.timing(
+                state.pan,
+                {toValue: {x:0, y:0}, duration:0, useNativeDriver: false}
+            ).start();
+            Animated.timing(
+                state.scaledSize,
+                {toValue:1, useNativeDriver: false}
+            ).start();
+        },
         onPanResponderRelease        : (e, gesture) => {
             props.setIsDisableScroll(false);
             Animated.timing(
