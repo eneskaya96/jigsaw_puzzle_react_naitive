@@ -53,9 +53,14 @@ const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
         }
     };
 
-    const handlePinch = Animated.event(
+    const handlePinch = (event) => { 
+        if((Shared.lastScale*event.nativeEvent.scale)>=1 && 
+            (Shared.lastScale*event.nativeEvent.scale)<=2) {
+            Animated.event(
             [{ nativeEvent: { scale: pinchScale } }],
-            { useNativeDriver: false });
+            { useNativeDriver: false })(event);
+        }
+    }
   
     const handlePinchStateChange = (event) => {
     if (event.nativeEvent.state === State.ACTIVE) {
@@ -93,7 +98,7 @@ const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
     };
 
     return (
-        <GestureHandlerRootView style={[style, {overflow: 'hidden'}]} onLayout={onLayout}>
+        <GestureHandlerRootView style={[style]} onLayout={onLayout}>
             <PanGestureHandler onGestureEvent={handlePan} onHandlerStateChange={handlePanStateChange}>
                 <PinchGestureHandler onGestureEvent={handlePinch} onHandlerStateChange={handlePinchStateChange}>
                     <Animated.View style={[styles.container,

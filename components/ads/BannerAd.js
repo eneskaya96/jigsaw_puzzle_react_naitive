@@ -7,12 +7,12 @@ const BannerAdView = () => {
   return (
     <View>
       <BannerAd
-        size={BannerAdSize.BANNER}
+        size={BannerAdSize.ADAPTIVE_BANNER}
         unitId={TestIds.BANNER}
         onAdFailedToLoad={error => console.error(error)}
         ref={bannerRef}
       />
-      <Button title="Reload" onPress={() => bannerRef.current?.loadAd()} />
+      {/* <Button title="Reload" onPress={() => bannerRef.current?.loadAd()} /> */}
     </View>
   );
 };

@@ -18,10 +18,9 @@ export const styles = StyleSheet.create({
     overflow: 'visible',
     backgroundColor: '#bbbbbb',
     height: PIECE_SIZE + 20,
-    zIndex: 1000,
     flexGrow: 0,
     width: '100%',
-    marginTop: 80
+    zIndex: 999
   },
   piece_container: {
     margin: 10,
@@ -52,14 +51,13 @@ export const styles = StyleSheet.create({
     backgroundColor: '#888',
     borderRadius: 10,
     margin: 25,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    overflow: 'hidden'
   },
   buttonShowImage: {
     borderRadius: 25,
     backgroundColor: '#090',
-    margin: 8,
-    padding: 20,
+    padding: 10,
     alignSelf: 'center',
-    marginBottom: 50
   },
 });

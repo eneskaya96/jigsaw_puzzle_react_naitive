@@ -1,4 +1,4 @@
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import {get_puzzle_pieces} from '../services/GameReqService';
 import {useState, useEffect} from 'react';
 import {styles} from '../utilities/CustomStyles';
@@ -7,6 +7,7 @@ import DraggableTarget from '../components/DraggableTarget';
 import ZoomableView from '../components/ZoomableView';
 import {Shared} from '../utilities/Shared';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import BannerAd from '../components/ads/BannerAd';
 
 export default function PlayScreen({route, navigation}) {
     const {puzzle, image_url} = route.params;
@@ -67,8 +68,40 @@ export default function PlayScreen({route, navigation}) {
                 flex: 1,
                 overflow: 'visible',
             }}>
+            <SafeAreaView style={{zIndex: 1000, backgroundColor: '#455C7B'}}>
+                <TouchableOpacity
+                style={styles.buttonShowImage}
+                onPress={async () => {
+                    setShowImage(!showImage);
+                }}>
+                <Ionicons
+                    name={showImage ? 'eye-off' : 'eye'}
+                    size={25}
+                    color="#fff"
+                />
+                </TouchableOpacity>
+            </SafeAreaView>
+            <ZoomableView
+                style={[styles.play_area]}
+                onLayout={event => {
+                Shared.playAreaSize = event.nativeEvent.layout;
+                Shared.targetSize = Shared.playAreaSize.width / columnCount;
+                }}
+                showImage={showImage}
+                imageUrl={image_url}>
+                {targets.map((data, idx) => {
+                return (
+                    <DraggableTarget
+                    key={data.item.id}
+                    data={data}
+                    dragdrop={dragdrop}
+                    />
+                );
+                })}
+            </ZoomableView>
+
             <FlatList
-                style={styles.pieces_container}
+                style={[styles.pieces_container]}
                 data={pieces}
                 keyExtractor={item => item.id}
                 renderItem={({item}) => (
@@ -89,41 +122,13 @@ export default function PlayScreen({route, navigation}) {
                 setFetchCount(fetchCount + 10);
                 }}
             />
-
-            <ZoomableView
-                style={styles.play_area}
-                onLayout={event => {
-                Shared.playAreaSize = event.nativeEvent.layout;
-                Shared.targetSize = Shared.playAreaSize.width / columnCount;
-                }}
-                showImage={showImage}
-                imageUrl={image_url}>
-                {targets.map((data, idx) => {
-                return (
-                    <DraggableTarget
-                    key={data.item.id}
-                    data={data}
-                    dragdrop={dragdrop}
-                    />
-                );
-                })}
-            </ZoomableView>
-
-            <TouchableOpacity
-              style={styles.buttonShowImage}
-              onPress={async () => {
-                setShowImage(!showImage);
-              }}>
-              <Ionicons
-                name={showImage ? 'eye-off' : 'eye'}
-                size={25}
-                color="#fff"
-              />
-            </TouchableOpacity>
             </View>
         ) : (
             <Text>Loading...</Text>
         )}
+        <SafeAreaView style={{backgroundColor: '#455C7B'}}>
+            <BannerAd />
+        </SafeAreaView>
         </View>
     );
 }
