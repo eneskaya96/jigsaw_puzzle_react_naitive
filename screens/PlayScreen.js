@@ -83,10 +83,7 @@ export default function PlayScreen({route, navigation}) {
             </SafeAreaView>
             <ZoomableView
                 style={[styles.play_area]}
-                onLayout={event => {
-                Shared.playAreaSize = event.nativeEvent.layout;
-                Shared.targetSize = Shared.playAreaSize.width / columnCount;
-                }}
+                columnCount={columnCount}
                 showImage={showImage}
                 imageUrl={image_url}>
                 {targets.map((data, idx) => {

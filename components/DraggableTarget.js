@@ -5,7 +5,7 @@ import React,{
     Image,
 } from 'react-native';
 import { styles } from '../utilities/CustomStyles';
-import { adjustGesture, getTargetIdx } from '../utilities/Methods';
+import { adjustGesture, adjustPosition, getTargetIdx } from '../utilities/Methods';
 import { Shared } from '../utilities/Shared';
 
 
@@ -46,46 +46,47 @@ const DraggableTarget = (props) => {
             }], {useNativeDriver: false})(e, gesture);
         },
         onPanResponderRelease        : (e, gesture) => {
-            const {column, row} = getTargetIdx(gesture.moveX, gesture.moveY);
-            if(column == final_pos_column && row == final_pos_row) {
-                props.data.locked = true;
-                lastPanX = column*Shared.targetSize;
-                lastPanY = row*Shared.targetSize;
-                Animated.timing(
-                    scaledSize,
-                    {toValue:1.5, duration:0, useNativeDriver: false}
-                ).start();
-                Animated.spring(
-                    scaledSize,
-                    {toValue:1, speed:0.1, useNativeDriver: false}
-                ).start();
+            const {x, y, success} = adjustPosition(gesture.moveX, gesture.moveY);
+            if(success) {
+                const column = Math.floor(x / Shared.targetSize);
+                const row = Math.floor(y / Shared.targetSize);
+                if(column == final_pos_column && row == final_pos_row) {
+                    props.data.locked = true;
+                    lastPanX = column*Shared.targetSize;
+                    lastPanY = row*Shared.targetSize;
+                    Animated.timing(
+                        scaledSize,
+                        {toValue:1.5, duration:0, useNativeDriver: false}
+                    ).start();
+                    Animated.spring(
+                        scaledSize,
+                        {toValue:1, speed:0.1, useNativeDriver: false}
+                    ).start();
+                } else {
+                    Animated.timing(
+                        scaledSize,
+                        {toValue:1, useNativeDriver: false}
+                    ).start();
+                    lastPanX = x - Shared.targetSize/2;
+                    lastPanY = y - Shared.targetSize/2;
+                }
+                props.data.pos.x = lastPanX + Shared.targetSize/2;
+                props.data.pos.y = lastPanY + Shared.targetSize/2;
+                basePanX.setValue(lastPanX);
+                basePanY.setValue(lastPanY);
+                activePanX.setValue(0);
+                activePanY.setValue(0);
             } else {
+                basePanX.setValue(props.data.pos.x - Shared.targetSize/2);
+                basePanY.setValue(props.data.pos.y - Shared.targetSize/2);
+                activePanX.setValue(0);
+                activePanY.setValue(0);
                 Animated.timing(
                     scaledSize,
                     {toValue:1, useNativeDriver: false}
                 ).start();
-                const {x, y, adjusted} = adjustGesture(gesture.moveX, gesture.moveY);
-                if(x!=-1 && y!=-1) {
-                    if(!adjusted.x) {
-                        lastPanX += activePanX._value/Shared.lastScale;
-                    } else {
-                        lastPanX = x - Shared.targetSize/2;
-                    }
-                    if(!adjusted.y) {
-                        lastPanY += activePanY._value/Shared.lastScale;
-                    } else {
-                        lastPanY = y - Shared.targetSize/2;
-                    }
-                } else {
-                    props.dragdrop(gesture.moveX, gesture.moveY, props.item, true);
-                }
+                props.dragdrop(gesture.moveX, gesture.moveY, props.item, true);
             }
-            props.data.pos.x = lastPanX + Shared.targetSize/2;
-            props.data.pos.y = lastPanY + Shared.targetSize/2;
-            basePanX.setValue(lastPanX);
-            basePanY.setValue(lastPanY);
-            activePanX.setValue(0);
-            activePanY.setValue(0);
         }
     });
     

@@ -48,11 +48,10 @@ export const styles = StyleSheet.create({
   play_area: {
     flex: 1,
     aspectRatio: 0.5,
+    margin: 20,
     backgroundColor: '#888',
     borderRadius: 10,
-    margin: 25,
     alignSelf: 'center',
-    overflow: 'hidden'
   },
   buttonShowImage: {
     borderRadius: 25,

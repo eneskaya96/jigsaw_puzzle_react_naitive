@@ -1,4 +1,5 @@
 export const Shared = {
+  basePlayAreaSize: null,
   playAreaSize: null,
   targetSize: null,
   lastScale: 1,

@@ -1,10 +1,10 @@
-import { Animated, Image } from "react-native";
+import { Animated, Image, View } from "react-native";
 import { PinchGestureHandler, PanGestureHandler, GestureHandlerRootView, State } from "react-native-gesture-handler";
 import { styles } from "../utilities/CustomStyles";
 import { Shared } from "../utilities/Shared";
 
 
-const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
+const ZoomableView = ({children, style, columnCount, showImage, imageUrl}) => {
     const focalX = new Animated.Value(0);
     const focalY = new Animated.Value(0);
 
@@ -64,7 +64,7 @@ const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
   
     const handlePinchStateChange = (event) => {
     if (event.nativeEvent.state === State.ACTIVE) {
-        xdif = event.nativeEvent.focalX - (Shared.playAreaSize.width/2 - Shared.lastPanX);
+        xdif = event.nativeEvent.focalX - (Shared.basePlayAreaSize.width/2 - Shared.lastPanX);
         if(Math.abs(xdif) > 2) {
             Animated.timing(
                 focalX,
@@ -72,7 +72,7 @@ const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
             ).start();
         }
 
-        ydif = event.nativeEvent.focalY - (Shared.playAreaSize.height/2 - Shared.lastPanY);
+        ydif = event.nativeEvent.focalY - (Shared.basePlayAreaSize.height/2 - Shared.lastPanY);
         if(Math.abs(ydif) > 2) {
             Animated.timing(
                 focalY,
@@ -98,11 +98,19 @@ const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
     };
 
     return (
-        <GestureHandlerRootView style={[style]} onLayout={onLayout}>
+        <GestureHandlerRootView style={{flex: 1, overflow: 'visible'}}
+        onLayout={event => {
+            Shared.basePlayAreaSize = event.nativeEvent.layout;
+        }}>
             <PanGestureHandler onGestureEvent={handlePan} onHandlerStateChange={handlePanStateChange}>
                 <PinchGestureHandler onGestureEvent={handlePinch} onHandlerStateChange={handlePinchStateChange}>
-                    <Animated.View style={[styles.container,
-                    {transform: [{scale: scale}, {translateX: panX}, {translateY: panY}]}]}>
+                    <Animated.View style={
+                    {flex: 1, transform: [{scale: scale}, {translateX: panX}, {translateY: panY}]}}>
+                        <View style={[styles.play_area]}
+                        onLayout={event => {
+                            Shared.playAreaSize = event.nativeEvent.layout;
+                            Shared.targetSize = Shared.playAreaSize.width / columnCount;
+                        }}>
                         {!showImage ? (children): (
                             <Image
                                 style={{width: '100%', height: '100%'}}
@@ -111,6 +119,7 @@ const ZoomableView = ({children, style, onLayout, showImage, imageUrl}) => {
                                 }}
                             />
                         )}
+                        </View>
                     </Animated.View>
                 </PinchGestureHandler>
             </PanGestureHandler>
