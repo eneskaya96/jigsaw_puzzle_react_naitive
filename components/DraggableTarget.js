@@ -46,8 +46,8 @@ const DraggableTarget = (props) => {
             }], {useNativeDriver: false})(e, gesture);
         },
         onPanResponderRelease        : (e, gesture) => {
-            const {x, y, success} = adjustPosition(gesture.moveX, gesture.moveY);
-            if(success) {
+            const {x, y, status} = adjustPosition(gesture.moveX, gesture.moveY);
+            if(status === 2) {
                 const column = Math.floor(x / Shared.targetSize);
                 const row = Math.floor(y / Shared.targetSize);
                 if(column == final_pos_column && row == final_pos_row) {
@@ -76,7 +76,7 @@ const DraggableTarget = (props) => {
                 basePanY.setValue(lastPanY);
                 activePanX.setValue(0);
                 activePanY.setValue(0);
-            } else {
+            } else if(status === 0) {
                 basePanX.setValue(props.data.pos.x - Shared.targetSize/2);
                 basePanY.setValue(props.data.pos.y - Shared.targetSize/2);
                 activePanX.setValue(0);
@@ -85,7 +85,8 @@ const DraggableTarget = (props) => {
                     scaledSize,
                     {toValue:1, useNativeDriver: false}
                 ).start();
-                props.dragdrop(gesture.moveX, gesture.moveY, props.item, true);
+            } else if(status === 1) {
+                props.dragdrop(x, 0, props.data.item, true);
             }
         }
     });

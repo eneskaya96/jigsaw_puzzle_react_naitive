@@ -50,8 +50,8 @@ const DraggableSource = (props) => {
                 {toValue:1, useNativeDriver: false}
             ).start();
            
-            const {x, y, success} = adjustPosition(gesture.moveX, gesture.moveY);
-            if(success) {
+            const {x, y, status} = adjustPosition(gesture.moveX, gesture.moveY);
+            if(status === 2) {
                 props.dragdrop(x, y, props.item, isTarget=false);
             } else {
                 Animated.timing(

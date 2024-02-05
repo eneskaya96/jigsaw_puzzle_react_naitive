@@ -2,9 +2,11 @@ import {Shared} from './Shared';
 
 
 export const adjustPosition = (move_x, move_y) => {
-    if(move_y < Shared.basePlayAreaSize.y ||
-        move_y > Shared.basePlayAreaSize.y + Shared.basePlayAreaSize.height) {
-        return {x: 0, y: 0, success: false};
+    if(move_y < Shared.basePlayAreaSize.y) {
+        return {x: 0, y: 0, status: 0};
+    }
+    else if(move_y > Shared.basePlayAreaSize.y + Shared.basePlayAreaSize.height) {
+        return {x: move_x, y: 0, status: 1};
     }
 
     let _play_x = (Shared.playAreaSize.x + Shared.playAreaSize.width/2) - 
@@ -28,6 +30,6 @@ export const adjustPosition = (move_x, move_y) => {
     point_x /= Shared.lastScale;
     point_y /= Shared.lastScale;
 
-    return {x: point_x, y: point_y, success: true};
+    return {x: point_x, y: point_y, status: 2};
 
 }

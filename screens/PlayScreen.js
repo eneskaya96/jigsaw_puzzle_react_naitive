@@ -1,6 +1,6 @@
 import {View, Text, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
 import {get_puzzle_pieces} from '../services/GameReqService';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {styles} from '../utilities/CustomStyles';
 import DraggableSource from '../components/DraggableSource';
 import DraggableTarget from '../components/DraggableTarget';
@@ -8,6 +8,7 @@ import ZoomableView from '../components/ZoomableView';
 import {Shared} from '../utilities/Shared';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import BannerAd from '../components/ads/BannerAd';
+import { PIECE_SIZE } from '../utilities/Constants';
 
 export default function PlayScreen({route, navigation}) {
     const {puzzle, image_url} = route.params;
@@ -18,26 +19,40 @@ export default function PlayScreen({route, navigation}) {
     const [isDisableScroll, setIsDisableScroll] = useState(false);
     const [targets, setTargets] = useState([]);
     const [showImage, setShowImage] = useState(false);
+    const flatListRef = useRef(null);
 
     function dragdrop(x, y, item, isTarget) {
         if (!isTarget) {
-        const _pieces = [...pieces];
-        for (var i = 0; i < _pieces.length; i++) {
-            if (_pieces[i].id == item.id) {
-            _pieces.splice(i, 1);
-            break;
+            const _pieces = [...pieces];
+            for (var i = 0; i < _pieces.length; i++) {
+                if (_pieces[i].id == item.id) {
+                    _pieces.splice(i, 1);
+                    break;
+                }
             }
-        }
-        setPieces(_pieces);
+            setPieces(_pieces);
 
-        const _targets = [...targets];
-        _targets.push({
-            pos: {x: x, y: y},
-            item: item,
-            locked: false,
-        });
-        setTargets(_targets);
+            const _targets = [...targets];
+            _targets.push({
+                pos: {x: x, y: y},
+                item: item,
+                locked: false,
+            });
+            setTargets(_targets);
         } else {
+            const _targets = [...targets];
+            for (var i = 0; i < _targets.length; i++) {
+                if (_targets[i].item.id == item.id) {
+                    _targets.splice(i, 1);
+                    break;
+                }
+            }
+            setTargets(_targets);
+
+            const scrollOffset = flatListRef.current._listRef._scrollMetrics.offset;
+            _idx = Math.floor((scrollOffset + x + (PIECE_SIZE+30)/2)/(PIECE_SIZE+30));
+            const _pieces = [...pieces.slice(0, _idx), item, ...pieces.slice(_idx)];
+            setPieces(_pieces);
         }
         return false;
     }
@@ -98,6 +113,7 @@ export default function PlayScreen({route, navigation}) {
             </ZoomableView>
 
             <FlatList
+                ref={flatListRef}
                 style={[styles.pieces_container]}
                 data={pieces}
                 keyExtractor={item => item.id}
