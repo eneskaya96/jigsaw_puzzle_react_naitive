@@ -5,8 +5,9 @@ import React,{
     Image,
 } from 'react-native';
 import { styles } from '../utilities/CustomStyles';
-import { adjustGesture, adjustPosition, getTargetIdx } from '../utilities/Methods';
+import { adjustPosition } from '../utilities/Methods';
 import { Shared } from '../utilities/Shared';
+import { PIECE_SIZE } from '../utilities/Constants';
 
 
 const DraggableTarget = (props) => {
@@ -44,6 +45,11 @@ const DraggableTarget = (props) => {
                 dx : activePanX,
                 dy : activePanY
             }], {useNativeDriver: false})(e, gesture);
+
+            if(gesture.moveY > Shared.basePlayAreaSize.y + Shared.basePlayAreaSize.height && 
+                gesture.moveY < Shared.basePlayAreaSize.y + Shared.basePlayAreaSize.height + PIECE_SIZE + 20) {
+                props.dragdrop(gesture.moveX, 0, props.data.item, 1);
+            }
         },
         onPanResponderRelease        : (e, gesture) => {
             const {x, y, status} = adjustPosition(gesture.moveX, gesture.moveY);
@@ -76,7 +82,7 @@ const DraggableTarget = (props) => {
                 basePanY.setValue(lastPanY);
                 activePanX.setValue(0);
                 activePanY.setValue(0);
-            } else if(status === 0) {
+            } else if(status === 0 || status === 1) {
                 basePanX.setValue(props.data.pos.x - Shared.targetSize/2);
                 basePanY.setValue(props.data.pos.y - Shared.targetSize/2);
                 activePanX.setValue(0);
@@ -85,8 +91,6 @@ const DraggableTarget = (props) => {
                     scaledSize,
                     {toValue:1, useNativeDriver: false}
                 ).start();
-            } else if(status === 1) {
-                props.dragdrop(x, 0, props.data.item, true);
             }
         }
     });

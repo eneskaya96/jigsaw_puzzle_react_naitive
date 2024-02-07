@@ -6,7 +6,7 @@ import React,{
     ActivityIndicator,
 } from 'react-native';
 import { styles } from '../utilities/CustomStyles';
-import { adjustGesture, adjustPosition } from '../utilities/Methods';
+import { adjustPosition } from '../utilities/Methods';
 
 
 const DraggableSource = (props) => {
@@ -52,7 +52,9 @@ const DraggableSource = (props) => {
            
             const {x, y, status} = adjustPosition(gesture.moveX, gesture.moveY);
             if(status === 2) {
-                props.dragdrop(x, y, props.item, isTarget=false);
+                props.dragdrop(x, y, props.item, 0);
+            } else if (status === 1) {
+                props.dragdrop(x, 0, props.item, 2);
             } else {
                 Animated.timing(
                     state.pan,

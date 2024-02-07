@@ -111,14 +111,13 @@ const ZoomableView = ({children, style, columnCount, showImage, imageUrl}) => {
                             Shared.playAreaSize = event.nativeEvent.layout;
                             Shared.targetSize = Shared.playAreaSize.width / columnCount;
                         }}>
-                        {!showImage ? (children): (
-                            <Image
-                                style={{width: '100%', height: '100%'}}
-                                source={{
-                                    uri: imageUrl,
-                                }}
-                            />
-                        )}
+                        {!showImage && children}
+                        <Image
+                            style={{width: '100%', height: '100%', borderRadius: 10, opacity: showImage? 1: 0}}
+                            source={{
+                                uri: imageUrl,
+                            }}
+                        />
                         </View>
                     </Animated.View>
                 </PinchGestureHandler>

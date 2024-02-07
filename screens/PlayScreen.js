@@ -21,8 +21,8 @@ export default function PlayScreen({route, navigation}) {
     const [showImage, setShowImage] = useState(false);
     const flatListRef = useRef(null);
 
-    function dragdrop(x, y, item, isTarget) {
-        if (!isTarget) {
+    function dragdrop(x, y, item, status) {
+        if (status === 0) {
             const _pieces = [...pieces];
             for (var i = 0; i < _pieces.length; i++) {
                 if (_pieces[i].id == item.id) {
@@ -39,7 +39,7 @@ export default function PlayScreen({route, navigation}) {
                 locked: false,
             });
             setTargets(_targets);
-        } else {
+        } else if (status ===  1) {
             const _targets = [...targets];
             for (var i = 0; i < _targets.length; i++) {
                 if (_targets[i].item.id == item.id) {
@@ -53,8 +53,21 @@ export default function PlayScreen({route, navigation}) {
             _idx = Math.floor((scrollOffset + x + (PIECE_SIZE+30)/2)/(PIECE_SIZE+30));
             const _pieces = [...pieces.slice(0, _idx), item, ...pieces.slice(_idx)];
             setPieces(_pieces);
+        } else if (status === 2) {
+            // const _pieces = [...pieces];
+            // for (var i = 0; i < _pieces.length; i++) {
+            //     if (_pieces[i].id == item.id) {
+            //         _pieces.splice(i, 1);
+            //         break;
+            //     }
+            // }
+            // setPieces(_pieces);
+
+            // const scrollOffset = flatListRef.current._listRef._scrollMetrics.offset;
+            // _idx = Math.floor((scrollOffset + x + (PIECE_SIZE+30)/2)/(PIECE_SIZE+30));
+            // const _pieces2 = [...pieces.slice(0, _idx), item, ...pieces.slice(_idx)];
+            // setPieces(_pieces2);
         }
-        return false;
     }
 
     useEffect(() => {
@@ -88,6 +101,7 @@ export default function PlayScreen({route, navigation}) {
                 style={styles.buttonShowImage}
                 onPress={async () => {
                     setShowImage(!showImage);
+                    setIsDisableScroll(!showImage);
                 }}>
                 <Ionicons
                     name={showImage ? 'eye-off' : 'eye'}
@@ -114,7 +128,7 @@ export default function PlayScreen({route, navigation}) {
 
             <FlatList
                 ref={flatListRef}
-                style={[styles.pieces_container]}
+                style={[styles.pieces_container, {opacity: showImage? 0: 1}]}
                 data={pieces}
                 keyExtractor={item => item.id}
                 renderItem={({item}) => (
@@ -139,9 +153,9 @@ export default function PlayScreen({route, navigation}) {
         ) : (
             <Text>Loading...</Text>
         )}
-        <SafeAreaView style={{backgroundColor: '#455C7B'}}>
+        <View style={{backgroundColor: '#455C7B'}}>
             <BannerAd />
-        </SafeAreaView>
+        </View>
         </View>
     );
 }
