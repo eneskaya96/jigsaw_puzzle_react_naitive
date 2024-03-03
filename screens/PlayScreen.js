@@ -123,7 +123,7 @@ export default function PlayScreen({route, navigation}) {
 
     return (
         <View style={{flex: 1}}>
-        {readyStat > 0 ? (
+        {pieces.length > 0 ? (
             <View
             style={{
                 flex: 1,
