@@ -1,5 +1,5 @@
 import {View, Text, FlatList, TouchableOpacity, SafeAreaView} from 'react-native';
-import {get_puzzle_pieces} from '../services/GameReqService';
+import {get_puzzle_pieces, save_puzzle} from '../services/GameReqService';
 import {useState, useEffect, useRef} from 'react';
 import {styles} from '../utilities/CustomStyles';
 import DraggableSource from '../components/DraggableSource';
@@ -14,6 +14,8 @@ export default function PlayScreen({route, navigation}) {
     const {puzzle, image_url} = route.params;
     const [columnCount, rowCount] = puzzle.type.split('x');
 
+    const [readyStat, setReadyStat] = useState(0);
+    const [readyAdStat, setReadyAdStat] = useState(0);
     const [pieces, setPieces] = useState([]);
     const [fetchCount, setFetchCount] = useState(0);
     const [isDisableScroll, setIsDisableScroll] = useState(false);
@@ -79,26 +81,63 @@ export default function PlayScreen({route, navigation}) {
         return on_leave;
       }, [navigation]);
 
-    useEffect(() => {
-        if (pieces.length == 0) {
-        get_puzzle_pieces(puzzle.id, 'idle').then(_pieces =>
-            setPieces(pieces.concat(_pieces)),
-        );
+
+    if (readyStat === 0) {
+        get_puzzle_pieces(puzzle.id, 'idle').then(_pieces => {
+            setPieces(pieces.concat(_pieces));
+        })
         setFetchCount(fetchCount + 10);
+        setReadyStat(1);
+    }
+
+    useEffect(() => {
+        if (readyStat === 2 && readyAdStat === 1) {
+            setReadyStat(3);
+            setReadyAdStat(2);
+            get_puzzle_pieces(puzzle.id, 'correct', limit = 1000).then(_c_pieces => {
+                const _targets = [...targets];
+                for(const _c_piece of _c_pieces) {
+                    const [_x, _y] = _c_piece.cur_pos.split('x');
+                    const _target = {
+                        pos: {x: _x, y: _y},
+                        item: _c_piece,
+                        locked: true
+                    }
+                    _targets.push(_target);
+                }
+                get_puzzle_pieces(puzzle.id, 'wrong', limit = 1000).then(_w_pieces => {
+                    for(const _w_piece of _w_pieces) {
+                        const [_x, _y] = _w_piece.cur_pos.split('x');
+                        const _target = {
+                            pos: {x: _x, y: _y},
+                            item: _w_piece,
+                            locked: false
+                        }
+                        _targets.push(_target);
+                    }
+                    setTargets(_targets);
+                });
+            });
         }
-    }, []);
+    }, [readyStat, readyAdStat]);
 
     return (
         <View style={{flex: 1}}>
-        {pieces.length > 0 ? (
+        {readyStat > 0 ? (
             <View
             style={{
                 flex: 1,
                 overflow: 'visible',
-            }}>
-            <SafeAreaView style={{zIndex: 1000, backgroundColor: '#455C7B'}}>
+            }}
+            onLayout={_ => {
+                if(readyStat === 1) {
+                    setReadyStat(2);
+                }
+                }}>
+            <SafeAreaView style={{zIndex: 1000, backgroundColor: '#455C7B', 
+            flexDirection:"row", justifyContent:'space-between'}}>
                 <TouchableOpacity
-                style={styles.buttonShowImage}
+                style={[styles.buttonShowImage]}
                 onPress={async () => {
                     setShowImage(!showImage);
                     setIsDisableScroll(!showImage);
@@ -108,6 +147,23 @@ export default function PlayScreen({route, navigation}) {
                     size={25}
                     color="#fff"
                 />
+                </TouchableOpacity>
+                <TouchableOpacity
+                style={[styles.buttonShowImage]}
+                onPress={async () => {
+                    const _targets = []
+                    for ( const _target of targets ) {
+                        _targets.push({
+                            piece_id: _target.item.id,
+                            status_id: _target.locked ? 2 : 3,
+                            position: Math.floor(_target.pos.x).toString() + 'x' + Math.floor(_target.pos.y).toString()
+                        })
+                    }
+                    save_puzzle(puzzle.id, _targets);
+                }}>
+                <Text>
+                    Save
+                </Text>
                 </TouchableOpacity>
             </SafeAreaView>
             <ZoomableView
@@ -154,7 +210,11 @@ export default function PlayScreen({route, navigation}) {
             <Text>Loading...</Text>
         )}
         <View style={{backgroundColor: '#455C7B'}}>
-            <BannerAd />
+            <BannerAd onLoad={_ => {
+                if(readyAdStat === 0) {
+                    setReadyAdStat(1);
+                }
+                }}/>
         </View>
         </View>
     );

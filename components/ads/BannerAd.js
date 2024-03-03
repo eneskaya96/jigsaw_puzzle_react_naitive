@@ -2,7 +2,7 @@ import React, {View, Button} from 'react-native';
 import {useRef} from 'react';
 import {BannerAd, TestIds, BannerAdSize} from '@react-native-admob/admob';
 
-const BannerAdView = () => {
+const BannerAdView = (props) => {
   const bannerRef = useRef(null);
   return (
     <View>
@@ -11,6 +11,7 @@ const BannerAdView = () => {
         unitId={TestIds.BANNER}
         onAdFailedToLoad={error => console.error(error)}
         ref={bannerRef}
+        onAdLoaded={props.onLoad}
       />
       {/* <Button title="Reload" onPress={() => bannerRef.current?.loadAd()} /> */}
     </View>

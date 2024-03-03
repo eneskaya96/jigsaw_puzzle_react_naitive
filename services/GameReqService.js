@@ -94,3 +94,35 @@ export async function get_puzzle_pieces(
     return [];
   }
 }
+
+export async function save_puzzle(
+    _puzzle_id,
+    _pieces,
+  ) {
+    try {
+      const response = await fetch(
+        SAAS_BASE_URL +
+          `puzzle/save`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + (await getToken()),
+          },
+          body: JSON.stringify({
+            puzzle_id: _puzzle_id,
+            pieces: _pieces,
+          }),
+        },
+      );
+  
+      const res_json = await response.json();
+      if (res_json.success) {
+        return true
+      } else {
+        return false;
+      }
+    } catch {
+      return false;
+    }
+  }
